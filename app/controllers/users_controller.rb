@@ -38,7 +38,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
       flash[:success] = "Welcome to Syphus Training"
-      redirect_to 'http://hunch.com/authorize/v1/?app_id=3148074' 
+      redirect_to 'http://hunch.com/authorize/v1/?app_id=3148074'
     else
       flash[@user.errors]
       render "new"
@@ -105,14 +105,8 @@ class UsersController < ApplicationController
   end
 
   def get_etsy_listings(recommendations)
-    # keywords = ""
-    # array = []
-    # while keywords.blank?
-      # 2.times { array << recommendations.sample["tags"].sample } 
-      # keywords = array.join("%2C").gsub(" ","+") unless array.empty?
-    # end
-    keywords = recommendations.sample["tags"].sample.to_s.gsub(" ", "+")
-    url = "http://openapi.etsy.com/v2/listings/active?api_key=#{ENV['ETSY_KEYSTRING']}&keywords=#{keywords}&includes=MainImage"
+     keywords = recommendations.sample["tags"].sample.to_s.gsub(" ", "+")
+    url = "http://openapi.etsy.com/v2/listings/active?api_key=#{ENV['ETSY_KEYSTRING']}&keywords=#{keywords}&includes=MainImage%limit=24"
     response = RestClient.get url
     result = JSON.parse(response)
     result["results"]
