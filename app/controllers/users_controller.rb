@@ -105,8 +105,8 @@ class UsersController < ApplicationController
   end
 
   def get_etsy_listings(recommendations)
-     keywords = recommendations.sample["tags"].sample.to_s.gsub(" ", "+")
-    url = "http://openapi.etsy.com/v2/listings/active?api_key=#{ENV['ETSY_KEYSTRING']}&keywords=#{keywords}&includes=MainImage%limit=24"
+    keywords = recommendations.sample["tags"].sample.to_s.gsub(" ", "+")
+    url = "http://openapi.etsy.com/v2/listings/active?api_key=#{ENV['ETSY_KEYSTRING']}&keywords=#{keywords}&includes=MainImage&limit=24"
     response = RestClient.get url
     result = JSON.parse(response)
     result["results"]
