@@ -1,11 +1,13 @@
 SyphusBeta::Application.routes.draw do
-  resources :exercises
-  resources :templates do
-    member do
-      post :copy
+  namespace :api do
+    namespace :v1 do
+      resources :recommendations do
+        member do
+          get :auth
+        end
+      end
     end
   end
-
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
