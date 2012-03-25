@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true
 
   def set_token(auth_token)
-    self.update_attribute(auth_token: auth_token)
+    self.update_attribute("auth_token", auth_token)
   end
 
   private

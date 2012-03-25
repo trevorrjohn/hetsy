@@ -6,11 +6,6 @@ class ApiController < ApplicationController
   def auth
     unless params[:auth_token_key].nil?
       auth_token = get_auth_token(params[:auth_token_key])
-      puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
-      puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
-      puts auth_token
-      puts "***********************************"
-      puts "***********************************"
       @user = current_user
       @user.set_token(auth_token)
       puts @user.auth_token
