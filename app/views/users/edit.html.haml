@@ -1,0 +1,16 @@
+%h1= "Edit #{@user.name}"
+
+%br
+
+.well
+  = simple_form_for(@user, html: { class: ""}) do |u|
+    =u.input :name, label: "Name"
+    =u.input :email, label: "Email Address"
+    =u.input :password, placeholder: "Password", label: false
+    =u.input :password_confirmation, placeholder: "Confirm password", label: false
+    =u.button :submit, class: "btn-primary btn-large"
+
+    %br
+    %br
+    .btn.btn-mini.btn-danger
+      = link_to "Delete user", @user, method: :delete, confirm: "Are you sure? Deleting a user cannot be undone.", class:"btn-delete-link"

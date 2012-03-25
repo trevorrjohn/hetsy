@@ -1,0 +1,13 @@
+%h1 User Profile
+
+%p#notice= notice
+
+%br
+.well
+  %table.table
+    %thead
+      %tr
+        %td= @user.name
+        %td= @user.email
+        %td= link_to "Edit", edit_user_path(@user)
+

@@ -1,0 +1,10 @@
+%h1 Sign up
+
+%br
+.well
+  =simple_form_for(@user) do |u|
+    =u.input :name, placeholder: "Name", label: false
+    =u.input :email, placeholder: "Email", label: false
+    =u.input :password, placeholder: "Password", label: false
+    =u.input :password_confirmation, placeholder: "Confirm password", label: false
+    =u.button :submit, class: "btn-inverse btn-large"

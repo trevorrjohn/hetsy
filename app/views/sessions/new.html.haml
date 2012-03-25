@@ -1,0 +1,15 @@
+%h1 Sign in
+
+%p#notice= notice
+
+%br
+.well
+  = simple_form_for :session, url: sessions_path do |f|
+    = f.error_notification
+
+    .form-inputs
+      =f.input :email, placeholder: "Email", label: false, multiple: false
+      =f.input :password, placeholder: "Password", label: false, multiple: false
+
+    .form-action
+      =f.button :submit, "Sign in", :class => 'btn-primary btn-large'

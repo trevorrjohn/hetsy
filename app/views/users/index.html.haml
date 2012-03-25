@@ -1,0 +1,27 @@
+%h1 User Index
+
+.well
+  =button_to "Create New User", new_user_path, class: "btn-large btn-inverse"
+
+  %table.table.table-striped
+    %thead
+      %tr
+        %th= link_to '#', users_path(sort_by:"ID")
+        %th= link_to "Name", users_path(sort_by:"Name")
+        %th= link_to "Email", users_path(sort_by:"Email")
+        %th 
+        %th 
+        %th 
+
+    %tbody
+      -@users.each do |u|
+        %tr
+          %td= u.id
+          -if u.admin?
+            %td{style: "font-weight:bolder"}= u.name
+          -else
+            %td= u.name
+          %td= u.email
+          %td= link_to "Profile", u
+          %td= link_to "Edit", edit_user_path(u)
+          %td= link_to "Destroy", u, method: :delete, confirm: "You Sure?"
