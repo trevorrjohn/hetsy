@@ -106,7 +106,7 @@ class UsersController < ApplicationController
 
   def get_etsy_listings(recommendations)
     keywords = recommendations.sample["tags"].sample.to_s.gsub(" ", "+")
-    url = "http://openapi.etsy.com/v2/listings/active?api_key=#{ENV['ETSY_KEYSTRING']}&keywords=#{keywords}&includes=MainImage&limit=24"
+    url = "http://openapi.etsy.com/v2/listings/active?api_key=#{ENV['ETSY_KEYSTRING']}&keywords=#{keywords}&includes=MainImage&limit=24&category=Geekery"
     begin
       response = RestClient.get url
     rescue

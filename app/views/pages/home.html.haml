@@ -3,11 +3,13 @@
 .well
   .row
     .span12
-      %h4.center This site was built at hackny! Htsy uses the computing power of Hunch to find you unique items |
+      %h4.center This site was built at hackNY! Htsy uses the computing power of Hunch to find you unique items |
         that suit your taste on Etsy. |
 
-    .span5
-      .main-button
+  .row
+    .span12
+      .main-button.center
         - unless signed_in?
+          %br
           = button_to("Sign up here", signup_path, class:"btn-inverse goto-syphus")
 
