@@ -8,6 +8,7 @@ class ApiController < ApplicationController
       auth_token = get_auth_token(params[:auth_token_key])
       @user = current_user
       @user.set_token(auth_token)
+      sign_in(@user)
       puts @user.auth_token
       redirect_to @user
     end

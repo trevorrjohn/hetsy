@@ -26,10 +26,32 @@
   padding: 8px 20px 9px;
 }
 
-.picture {
-  padding: 10px 10px 10px;
+.showcase {
+  background:#82997F;
 }
 
-.showcase {
-  background: #C1D9C5;
+.well {
+  background:#82997F;
+}
+
+.item {
+  overflow:hidden;
+  width: 265px;
+  margin:10px;
+  float: left;
+  img {
+    max-width: 265px;
+  }
+}
+
+#container {
+  background: #82997F;
+}
+
+h4 {
+  color: #1E2729;
+}
+
+.brand {
+  color: #913420;
 }

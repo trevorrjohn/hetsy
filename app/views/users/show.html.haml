@@ -1,24 +1,14 @@
-%h1 User Profile
+%h1= "#{@user.name}\'s Etsy Results"
 
 %p#notice= notice
 
-%br
-.well
-  %table.table
-    %thead
-      %tr
-        %td= @user.name
-        %td= @user.email
-        %td= link_to "Edit", edit_user_path(@user)
-        -if @user.auth_token.blank?
-          =button_to "Register Hunch", 'http://hunch.com/authorize/v1/?app_id=3148074'
+-if @user.auth_token.blank?
+  =button_to "Register Hunch", 'http://hunch.com/authorize/v1/?app_id=3148074'
+  %br
 
 -if @listings
   %br
-  .showcase
-    .row
-      - @listings.each do |listing|
-        .span4
-          .picture
-            = link_to image_tag(listing["MainImage"]["url_170x135"]), listing["url"]
+  #container
+    - @listings.each do |listing|
+      .item= link_to image_tag(listing["MainImage"]["url_fullxfull"]), listing["url"], target: "_blank"
 
