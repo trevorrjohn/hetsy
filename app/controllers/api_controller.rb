@@ -18,7 +18,11 @@ class ApiController < ApplicationController
   def get_auth_token( auth_token_key )
     url = "http://api.hunch.com/api/v1/get-auth-token/?app_id=#{HUNCH_APP_ID}&auth_token_key=#{auth_token_key}"
     auth_sig = get_auth_sig(url, HUNCH_APP_SECRET)
-    response = RestClient.get "#{url}&auth_sig=#{auth_sig}"
+    begin
+      response = RestClient.get "#{url}&auth_sig=#{auth_sig}"
+    rescue
+      redirect_to current_user
+    end
     result = JSON.parse(response)
     result["auth_token"]
   end

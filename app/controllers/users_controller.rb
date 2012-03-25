@@ -107,14 +107,22 @@ class UsersController < ApplicationController
   def get_etsy_listings(recommendations)
     keywords = recommendations.sample["tags"].sample.to_s.gsub(" ", "+")
     url = "http://openapi.etsy.com/v2/listings/active?api_key=#{ENV['ETSY_KEYSTRING']}&keywords=#{keywords}&includes=MainImage&limit=24"
-    response = RestClient.get url
+    begin
+      response = RestClient.get url
+    rescue
+      redirect_to current_user
+    end
     result = JSON.parse(response)
     result["results"]
   end
 
   def get_recommendations(auth_token)
     url = "http://api.hunch.com/api/v1/get-recommendations/?auth_token=#{auth_token}&topic_ids=#{TOPIC_STR}&sites=hn&exclude_likes=1&limit=100"
-    response = RestClient.get url
+    begin
+      response = RestClient.get url
+    rescue
+      redirect_to current_user
+    end
     result = JSON.parse(response)
     result["recommendations"]
   end
