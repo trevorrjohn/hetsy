@@ -1,13 +1,5 @@
 SyphusBeta::Application.routes.draw do
-  namespace :api do
-    namespace :v1 do
-      resources :recommendations do
-        member do
-          get :auth
-        end
-      end
-    end
-  end
+  match 'api/v1/auth', to: "api#auth"
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 

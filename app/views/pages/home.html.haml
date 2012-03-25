@@ -7,5 +7,6 @@
 
     .span5
       .main-button
-        = button_to("Sign up here", signup_path, class:"btn-inverse goto-syphus")
+        - unless signed_in?
+          = button_to("Sign up here", signup_path, class:"btn-inverse goto-syphus")
 

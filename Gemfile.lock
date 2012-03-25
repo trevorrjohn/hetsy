@@ -187,6 +187,7 @@ DEPENDENCIES
   jquery-rails
   pg
   rails (= 3.2.2)
+  rest-client (~> 1.6.7)
   rspec-rails
   sass-rails (~> 3.2.3)
   shoulda-matchers

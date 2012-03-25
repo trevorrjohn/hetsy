@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   before_save :create_remember_token
   before_save :downcase_email
 
-  attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :name, :email, :password, :password_confirmation, :auth_token
   has_secure_password
 
   validates :name, presence: true, length: { maximum: 50 }
@@ -13,6 +13,10 @@ class User < ActiveRecord::Base
 
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
+
+  def set_token(auth_token)
+    self.update_attribute(auth_token: auth_token)
+  end
 
   private
 

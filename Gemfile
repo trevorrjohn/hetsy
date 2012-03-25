@@ -4,6 +4,7 @@ gem 'rails', '3.2.2'
 gem 'haml-rails'
 gem 'simple_form'
 gem 'jquery-rails'
+gem 'rest-client', '~> 1.6.7'
 gem 'bcrypt-ruby', '~> 3.0.0'
 
 group :development, :test do
